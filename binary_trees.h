@@ -22,6 +22,21 @@ struct binary_tree_s
     struct binary_tree_s *right;
 };
 
+/**
+ * binary_tree_balance - measures the balance factor of a binary tree
+ * @tree: pointer to the root node of the tree to measure
+ *
+ * Return: the balance factor, or 0 if tree is NULL
+ */
+
+int binary_tree_balance(const binary_tree_t *tree)
+{
+	if (tree == NULL)
+		return (0);
+
+	return (binary_tree_height(tree->left) - binary_tree_height(tree->right));
+}
+
 typedef struct binary_tree_s binary_tree_t;
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
@@ -37,5 +52,6 @@ size_t binary_tree_depth(const binary_tree_t *tree);
 size_t binary_tree_size(const binary_tree_t *tree);
 size_t binary_tree_leaves(const binary_tree_t *tree);
 size_t binary_tree_nodes(const binary_tree_t *tree);
+int binary_tree_balance(const binary_tree_t *tree);
 
 #endif
